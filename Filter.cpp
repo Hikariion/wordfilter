@@ -35,7 +35,7 @@ void Filter::load(const char* filePath)
 		}*/
 		string word;
 		while (getline(keywordsFile, word)) {
-			cout << word;
+			//cout << word << endl;
 			m_tree.insert(word);
 		}
 

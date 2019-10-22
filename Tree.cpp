@@ -1,7 +1,13 @@
 #include "Tree.h"
 #include<iostream>
 
-#define PACE 2    //如果需要考虑英文或中英文结合的情况，将PACE改为1，另外程序还需要做部分修改
+int setPACE(string keyword) {
+	string tmp = keyword.substr(0, 1);
+	if (tmp[0] > 32 && tmp[0] <= 128)
+		return 1;
+	else
+		return 2;
+}
 
 TreeNode * Tree::insert(string & keyword)
 {
@@ -17,9 +23,11 @@ TreeNode* Tree::insert(const char* keyword)
 
 TreeNode* Tree::insert(TreeNode* parent, string& keyword)
 {
+	int PACE = 0;
 	if (keyword.size() == 0)
 		return NULL;
-	string firstChar = keyword.substr(0, PACE);
+	PACE = setPACE(keyword);
+	string	firstChar = keyword.substr(0, PACE);
 	TreeNode* firstNode = parent->findChild(firstChar);
 	if (firstNode == NULL)
 		return insertBranch(parent, keyword);
@@ -29,6 +37,8 @@ TreeNode* Tree::insert(TreeNode* parent, string& keyword)
 
 TreeNode* Tree::insertBranch(TreeNode* parent, string& keyword)
 {
+	int PACE = 0;
+	PACE = setPACE(keyword);
 	string firstChar = keyword.substr(0, PACE);
 	TreeNode* firstNode = parent->insertChild(firstChar);
 	if (firstNode != NULL)
@@ -48,6 +58,8 @@ TreeNode* Tree::find(string& keyword)
 
 TreeNode* Tree::find(TreeNode* parent, string& keyword)
 {
+	int PACE = 0;
+	PACE = setPACE(keyword);
 	string firstChar = keyword.substr(0, PACE);
 	TreeNode* firstNode = parent->findChild(firstChar);
 	if (firstNode == NULL)            //未找到

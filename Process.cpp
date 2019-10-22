@@ -4,7 +4,7 @@
 #include <fstream>
 #include "Filter.h"
 #include <sys/timeb.h>
-//#include <codecvt>
+
 using namespace std;
 
 void main()
@@ -14,7 +14,7 @@ void main()
 	filter.load("keywords.txt");
 	ifstream inputFile("input.txt", ios::in);
 	inputFile >> str;
-	cout  << str ;
+	//cout  << str ;
 	inputFile.close();
 	ofstream outputFile("output.txt", ios::out);
 	struct timeb startTime, endTime;

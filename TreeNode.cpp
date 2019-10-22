@@ -9,15 +9,15 @@ string TreeNode::getCharacter() const
 
 TreeNode::TreeNode(string character)
 {
-	if (character.size() == 2)
+	//if (character.size() == 2)         //可能需要修改
 		m_character.assign(character);
-	else
-		cout << "error";
+	//else
+		//cout << "error";
 }
 
 TreeNode* TreeNode::findChild(string& nextCharacter)
 {
-	_TreeMapIterator TreeMapIt = m_map.find(nextCharacter);    //利用map/unordered_map进行查找
+	_TreeMapIterator TreeMapIt = m_map.find(nextCharacter);    //利用map进行查找
 	return (TreeMapIt == m_map.end()) ? NULL : &TreeMapIt->second;
 	return NULL;
 }
